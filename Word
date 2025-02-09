@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    string s;
+    cin >> s;
+
+    int lowercase_count = 0, uppercase_count = 0;
+
+    // Count the number of lowercase and uppercase letters
+    for (char c : s) {
+        if (islower(c)) {
+            lowercase_count++;
+        } else if (isupper(c)) {
+            uppercase_count++;
+        }
+    }
+
+    // Transform the word based on the counts
+    if (lowercase_count >= uppercase_count) {
+        transform(s.begin(), s.end(), s.begin(), ::tolower);
+    } else {
+        transform(s.begin(), s.end(), s.begin(), ::toupper);
+    }
+
+    cout << s << endl;
+
+    return 0;
+}
